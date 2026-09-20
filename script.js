@@ -36,10 +36,8 @@ window.addEventListener("keyup", (e) => {
 function setupTouchBtn(btnId, keyName) {
   const btn = document.getElementById(btnId);
   if (!btn) return;
-  
   const press = (e) => { e.preventDefault(); keys[keyName] = true; };
   const release = (e) => { e.preventDefault(); keys[keyName] = false; };
-  
   btn.addEventListener("touchstart", press, {passive: false});
   btn.addEventListener("touchend", release, {passive: false});
   btn.addEventListener("mousedown", press);
@@ -53,7 +51,13 @@ setupTouchBtn("btnLeft", "left");
 setupTouchBtn("btnRight", "right");
 setupTouchBtn("btnShoot", "shoot");
 
-document.getElementById("btnRestart").addEventListener("click", resetGame);
+// --- EVENTO PARA VOLVER A JUGAR (Funciona en PC y Celular) ---
+const btnRestart = document.getElementById("btnRestart");
+btnRestart.addEventListener("click", resetGame);
+btnRestart.addEventListener("touchstart", (e) => {
+  e.preventDefault(); // Evita fallos táctiles
+  resetGame();
+}, {passive: false});
 
 // --- LÓGICA DEL JUGADOR ---
 const player = {
@@ -277,6 +281,12 @@ function gameLoop() {
   }
 
   requestAnimationFrame(gameLoop);
+}
+
+function endGame() {
+  isGameOver = true;
+  finalScore.textContent = score;
+  gameOverScreen.classList.remove("hidden");
 }
 
 updateHUD();
