@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Air Strike - Edición Ataucusi</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -10,13 +10,26 @@
 
   <div class="game-wrapper">
     <div class="hud">
-      <div>Puntos: <span id="scoreText">0</span></div>
-      <div>Arma: Lv <span id="weaponText">1</span></div>
-      <div>Escudo: <span id="shieldText" class="shield-text">0</span></div>
-      <div>Vida: <span id="hpText" class="hp-text">100</span></div>
+      <div>Pts: <span id="scoreText">0</span></div>
+      <div>Arma: <span id="weaponText">1</span></div>
+      <div>Esc: <span id="shieldText" class="shield-text">0</span></div>
+      <div>HP: <span id="hpText" class="hp-text">100</span></div>
     </div>
 
     <canvas id="gameCanvas" width="480" height="640"></canvas>
+
+    <!-- Controles Táctiles para Celulares -->
+    <div class="mobile-controls">
+      <div class="d-pad">
+        <button id="btnUp" class="d-btn up">▲</button>
+        <button id="btnLeft" class="d-btn left">◄</button>
+        <button id="btnRight" class="d-btn right">►</button>
+        <button id="btnDown" class="d-btn down">▼</button>
+      </div>
+      <div class="action-btn">
+        <button id="btnShoot" class="shoot-btn">🔥<br>FUEGO</button>
+      </div>
+    </div>
 
     <div class="controls-guide">
       Mover: <strong>Flechas / W A S D</strong> | Disparar: <strong>Espacio</strong>
@@ -25,7 +38,7 @@
     <div id="gameOverScreen" class="game-over hidden">
       <h2>GAME OVER SUTTA</h2>
       <p>Puntuación Final: <span id="finalScore">0</span></p>
-      <button id="btnRestart">Reintentar Misión</button>
+      <button id="btnRestart" class="restart-btn">Reintentar</button>
     </div>
   </div>
 
