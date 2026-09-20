@@ -12,7 +12,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  touch-action: none; /* Previene scroll accidental en celulares */
+  touch-action: none;
 }
 
 .game-wrapper {
@@ -44,12 +44,11 @@ canvas {
   background: #000000;
   border: 2px solid #334155;
   width: 100%;
-  height: auto; /* Mantiene la proporción en celulares */
-  max-height: 70vh; /* Evita que ocupe más de la pantalla en móviles */
+  height: auto;
+  max-height: 70vh;
   display: block;
 }
 
-/* Guía de Teclado (PC) */
 .controls-guide {
   width: 100%;
   background: rgba(15, 23, 42, 0.95);
@@ -61,9 +60,8 @@ canvas {
   color: #94a3b8;
 }
 
-/* Controles Táctiles (Móviles) */
 .mobile-controls {
-  display: none; /* Oculto en PC por defecto */
+  display: none;
   width: 100%;
   background: rgba(15, 23, 42, 0.95);
   border: 2px solid #334155;
@@ -76,7 +74,7 @@ canvas {
 
 @media (max-width: 768px) {
   .mobile-controls { display: flex; }
-  .controls-guide { display: none; } /* Oculta el texto de PC en celulares */
+  .controls-guide { display: none; }
 }
 
 .d-pad {
@@ -122,32 +120,47 @@ canvas {
 
 .shoot-btn:active { background: #b91c1c; transform: scale(0.95); }
 
-/* Pantalla de Game Over */
+/* --- CARTEL DE GAME OVER MEJORADO --- */
 .game-over {
   position: absolute;
-  top: 45%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.95);
   border: 3px solid #ef4444;
-  padding: 20px 30px;
+  padding: 25px 20px;
   border-radius: 12px;
   text-align: center;
   width: 90%;
-  max-width: 320px;
+  max-width: 340px;
+  z-index: 9999; /* Esto fuerza a que el cartel aparezca sobre TODO */
+  box-shadow: 0 10px 30px rgba(239, 68, 68, 0.5);
 }
 
 .game-over.hidden { display: none; }
-.game-over h2 { color: #ef4444; margin-top: 0; font-size: 1.6rem; }
+
+.game-over h2 { 
+  color: #ef4444; 
+  margin-top: 0; 
+  font-size: 1.8rem; 
+  text-shadow: 2px 2px 0 #7f1d1d;
+}
 
 .restart-btn {
   background-color: #dc2626;
   color: #ffffff;
   border: none;
-  padding: 12px 20px;
-  font-size: 1.1rem;
+  padding: 15px 20px;
+  font-size: 1.2rem;
   font-weight: bold;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 15px;
+  width: 100%;
+  box-shadow: 0 4px 0 #7f1d1d;
+}
+
+.restart-btn:active {
+  transform: translateY(4px);
+  box-shadow: none;
 }
